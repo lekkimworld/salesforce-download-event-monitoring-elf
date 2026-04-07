@@ -19,7 +19,9 @@ sf data query -q "SELECT EventType, COUNT(Id) FROM EventLogFile WHERE Interval='
 ```bash
 jq -r '.result.records[].EventType' ./event_types.json | while read -r event; do
     echo "Getting Daily log files for : $event"
-    sf data query -q "SELECT LogDate, LogFile FROM EventLogFile WHERE Interval='Daily' AND EventType='$event'  AND LogDate >= 2026-02-01T00:00:00.000Z AND LogDate <= 2026-03-31T00:00:00.0000Z" --json > ${event}_logfiles.json
+    sf data query -q "SELECT LogDate, LogFile FROM EventLogFile WHERE Interval='Daily' \
+		AND EventType='$event' AND LogDate >= 2026-02-01T00:00:00.000Z AND \
+		LogDate <= 2026-03-31T00:00:00.0000Z" --json > ${event}_logfiles.json
 done
 ```
 4. Download log files
