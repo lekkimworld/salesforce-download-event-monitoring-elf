@@ -13,7 +13,8 @@ Scripts for downloading Salesforce Event Monitoring data using `sf` CLI.
 	```
 2. Get the types of `Daily` Event Log File types we have
 ```bash
-sf data query -q "SELECT EventType, COUNT(Id) FROM EventLogFile WHERE Interval='Daily' GROUP BY EventType" --json > event_types.json
+sf data query -q "SELECT EventType, COUNT(Id) FROM EventLogFile WHERE Interval='Daily' \
+	GROUP BY EventType" --json > event_types.json
 ```
 3. Loop event types and get log files per event type
 ```bash
