@@ -49,4 +49,6 @@ $RECYCLE.BIN/
 
 # generated data
 *.csv
-*.json
+*_logfiles.json
+event_types.json
+m/**

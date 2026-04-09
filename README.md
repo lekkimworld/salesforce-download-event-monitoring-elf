@@ -42,3 +42,10 @@ done
 			sf request api rest $logfile --stream-to-file="${SF_EVENT_NAME}_${strdate}.csv"
 		done
 	done
+
+## Read data in S3 from CRM Analytics
+To make CRM Analytics (CRMA) read data from S3 it seems to be in a folder structure with the folder name being the "object" name in CRMA. There also needs to be a `schema_sample.csv` file with the header row and one row of data. The `upload_events.sh` script loops all the CSV files in the same directory, parse out the event name and uploads to a folder called `crma/sf_elf_<event name>` on S3 together with a `sample_schema.csv` file. 
+
+The script sources `.env` to get the `BUCKET_NAME` and `PROFILE` environment variables to use in the script.
+
+The [documentation on the CRMA connector](https://help.salesforce.com/s/articleView?id=xcloud.sdp_connectors_s3.htm&type=5) is so so...
